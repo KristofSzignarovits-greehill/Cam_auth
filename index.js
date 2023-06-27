@@ -16,7 +16,7 @@ require('dotenv').config()
 
   function token (httpMethod,protocol,requestURI,parameters) {
     try {
-        const combinedString = `${httpMethod}&${protocol}://singapore.greehill.services/api/rtms-server/v1${requestURI}?${parameters}`;
+        const combinedString = `${httpMethod}&http://singapore.greehill.services/v1${requestURI}?${parameters}`;
         const signingKey = Buffer.from(process.env.SECRET_KEY, 'utf8');
         const hmac = crypto.createHmac('sha256', signingKey);
         hmac.update(combinedString);
